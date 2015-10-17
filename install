@@ -14,8 +14,6 @@ fi
 mkdir -p $PROG_PATH
 mkdir -p $PROG_PATH/logs
 
-cp -v -n -r bin $PROG_PATH/bin
-cp -v -n -r conf $PROG_PATH/conf
 cp -v -n -r lib $PROG_PATH/lib
 
 cp -v -n -r lib $PROG $PROG_PATH/

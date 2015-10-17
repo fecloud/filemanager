@@ -15,7 +15,6 @@ mkdir -p $PROG_PATH
 mkdir -p $PROG_PATH/logs
 
 cp -v -n -r lib $PROG_PATH/lib
-
 cp -v -n -r lib $PROG $PROG_PATH/
 
 if [ -f "/etc/init.d/$PROG" ] ; then
@@ -27,6 +26,7 @@ ln -s $PROG_PATH/$PROG /etc/init.d/$PROG
 
 chmod 755 $PROG_PATH/bin/$PROG
 chmod 755 $PROG_PATH/$PROG
+chmod 777 $PROG_PATH/logs
 chmod 755 /etc/init.d/$PROG
 
 if [ -x "/usr/bin/node" ] ; then

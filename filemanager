@@ -15,11 +15,12 @@
 PROG="filemanager"
 MSG_PREFIX=" *"
 PROG_BASE="/data/app/$PROG"
-PROG_PATH="$PROG_BASE/lib/$PROG.js" #::# Not need, but sometimes helpful (if $PROG resides in /opt for example).
+PROG_PATH="$PROG_BASE/lib/main.js" #::# Not need, but sometimes helpful (if $PROG resides in /opt for example).
 PROG_PID="$PROG_BASE/logs/$PROG.pid"
 PROG_LOG="$PROG_BASE/logs/$PROG.log"
 PROG_ARGS="10001 /hdd/ $PROG_PID"
 PROG_NODE="/data/app/nodejs/bin/node"
+PROG_USER="linaro"
 
 start() {
 	PROG_STATUS=0
@@ -40,7 +41,7 @@ start() {
 		echo "$MSG_PREFIX $PROG is currently running..."
 		exit 1
     else
-        $PROG_NODE $PROG_PATH $PROG_ARGS >> $PROG_LOG 2>&1 &
+        su -c "$PROG_NODE $PROG_PATH $PROG_ARGS >> $PROG_LOG 2>&1 &" $PROG_USER
         echo "$MSG_PREFIX $PROG started"
     fi
 }
